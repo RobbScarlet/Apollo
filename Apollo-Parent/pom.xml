@@ -12,6 +12,9 @@
     <properties>
         <junit.version>4.11</junit.version>
         <log4j.version>2.5</log4j.version>
+        <jsr250.version>1.0</jsr250.version>
+        <jsr305.version>3.0.0</jsr305.version>
+        <jsr330.version>1.0</jsr330.version>
         <guava.version>19.0</guava.version>
         <mysql.version>5.1.38</mysql.version>
         <mybatis.version>3.3.0</mybatis.version>
@@ -20,10 +23,13 @@
         <jest.version>2.0.0</jest.version>
         <jedis.version>2.8.0</jedis.version>
         <jackson.version>2.6.3</jackson.version>
+        <thrift.version>0.9.3</thrift.version>
         <zookeeper.version>3.4.6</zookeeper.version>
-        <jsr250.version>1.0</jsr250.version>
-        <jsr305.version>3.0.0</jsr305.version>
-        <jsr330.version>1.0</jsr330.version>
+        <finagle.thrift.artifactId>finagle-thrift_2.11</finagle.thrift.artifactId>
+        <finagle.stats.artifactId>finagle-stats_2.11</finagle.stats.artifactId>
+        <finagle.version>6.35.0</finagle.version>
+        <twitter.server.artifactId>twitter-server_2.11</twitter.server.artifactId>
+        <twitter.server.version>1.20.0</twitter.server.version>
         <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -60,6 +66,17 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-jcl</artifactId>
             <version>${log4j.version}</version>
+        </dependency>
+        <!-- guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>${jsr305.version}</version>
         </dependency>
     </dependencies>
 

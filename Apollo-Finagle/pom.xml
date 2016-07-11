@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>apollo-parent</artifactId>
+        <groupId>com.robblibrary.apollo</groupId>
+        <version>1.0.0</version>
+        <relativePath>../Apollo-Parent/pom.xml</relativePath>
+    </parent>
+    <artifactId>apollo-finagle</artifactId>
+
+    <dependencies>
+        <!-- twitter server -->
+        <dependency>
+            <groupId>com.twitter</groupId>
+            <artifactId>${twitter.server.artifactId}</artifactId>
+            <version>${twitter.server.version}</version>
+        </dependency>
+        <!-- finagle thrift -->
+        <dependency>
+            <groupId>com.twitter</groupId>
+            <artifactId>${finagle.thrift.artifactId}</artifactId>
+            <version>${finagle.version}</version>
+        </dependency>
+        <!-- finagle stats -->
+        <dependency>
+            <groupId>com.twitter</groupId>
+            <artifactId>${finagle.stats.artifactId}</artifactId>
+            <version>${finagle.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.twitter</groupId>
+            <artifactId>scrooge-core_2.11</artifactId>
+            <version>4.7.0</version>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.apache.thrift</groupId>-->
+            <!--<artifactId>libthrift</artifactId>-->
+            <!--<version>0.9.3</version>-->
+        <!--</dependency>-->
+        <!-- spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.twitter</groupId>
+                <artifactId>scrooge-maven-plugin</artifactId>
+                <version>4.7.0</version>
+                <configuration>
+                    <!--<thriftNamespaceMappings>
+                        <thriftNamespaceMapping>
+                            <from>com.twitter.demo</from>
+                            <to>com.twitter.mydemo.renamed</to>
+                        </thriftNamespaceMapping>
+                    </thriftNamespaceMappings>-->
+                    <thriftSourceRoot>src/thrift</thriftSourceRoot>
+                    <outputDirectory>
+                        /Users/Remilia/Repository/RobbScarlet/Apollo/Apollo-Finagle/src/main/finagle
+                    </outputDirectory>
+
+                    <language>java</language> <!-- default is scala -->
+                    <thriftOpts>
+                        <!-- add other Scrooge command line options using thriftOpts -->
+                        <thriftOpt>--finagle</thriftOpt>
+                    </thriftOpts>
+                    <!-- tell scrooge to not to build the extracted thrift files (defaults to true) -->
+                    <!--<buildExtractedThrift>false</buildExtractedThrift>-->
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>thrift-sources</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>thrift-test-sources</id>
+                        <phase>generate-test-sources</phase>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
